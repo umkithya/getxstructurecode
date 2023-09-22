@@ -12,4 +12,5 @@ class Endpoints {
 
   static const String users = '/users';
   static const String products = '/products';
+  static const String login = '/auth/login';
 }

@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 
 import '../../data/home_api_provider.dart';
 import '../../data/home_repository.dart';
-import '../../domain/adapters/repository_adapter.dart';
+import '../../domain/adapters/home_repository_adapter.dart';
 import '../controller/home_controller.dart';
 
 class HomeBinding extends Bindings {

@@ -1,6 +1,6 @@
-import 'package:getxstructurecode/core/network/end_point.dart';
+import 'package:getxstructurecode/network/end_point.dart';
 
-import '../domain/adapters/repository_adapter.dart';
+import '../domain/adapters/home_repository_adapter.dart';
 import '../domain/entity/product_model/product_model.dart';
 import 'home_api_provider.dart';
 
@@ -10,6 +10,11 @@ class HomeRepository implements IHomeRepository {
 
   @override
   Future<List<ProductModel>> getProducts() async {
-    return await provider.getProducts(Endpoints.products);
+    try {
+      return await provider.getProducts(Endpoints.products);
+    } catch (e) {
+      rethrow;
+      // return [];
+    }
   }
 }

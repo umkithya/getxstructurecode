@@ -1,9 +1,12 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getxstructurecode/module/home/domain/adapters/repository_adapter.dart';
+import 'package:getxstructurecode/network/dio_exceptions.dart';
+import 'package:getxstructurecode/module/home/domain/adapters/home_repository_adapter.dart';
 import 'package:getxstructurecode/module/home/domain/entity/product_model/product_model.dart';
 
-class HomeController extends GetxController {
+class HomeController extends GetxController
+    with StateMixin<List<ProductModel>> {
   HomeController({required this.homeRepository});
   final IHomeRepository homeRepository;
   final listProduct = <ProductModel>[].obs;
@@ -28,6 +31,14 @@ class HomeController extends GetxController {
   }
 
   Future<void> getProductData() async {
-    listProduct.value = await homeRepository.getProducts();
+    try {
+      change([], status: RxStatus.loading());
+      listProduct.value = await homeRepository.getProducts();
+      change(listProduct, status: RxStatus.success());
+    } on DioException catch (e) {
+      final errorMessage = DioExceptions.fromDioError(e).toString();
+      change([], status: RxStatus.error(errorMessage));
+      throw errorMessage;
+    }
   }
 }

@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 
 import 'end_point.dart';
 
@@ -23,7 +24,8 @@ class DioHelper {
           const Duration(milliseconds: Endpoints.connectionTimeout)
       ..options.receiveTimeout =
           const Duration(milliseconds: Endpoints.receiveTimeout)
-      ..options.responseType = ResponseType.json;
+      ..options.responseType = ResponseType.json
+      ..options.validateStatus = (_) => false;
 
     if (methode != METHODE.get && body == null) {
       throw Exception('Body must not be null of $methode');
@@ -60,24 +62,33 @@ class DioHelper {
           }
         case METHODE.post:
           {
-            response = await dio.post(
-              endPoint,
-              data: json.encode(body),
-              queryParameters: queryParameters,
-              onReceiveProgress: onReceiveProgress,
-              onSendProgress: onSendProgress,
-            );
+            try {
+              response = await dio.post(
+                endPoint,
+                data: json.encode(body),
+                queryParameters: queryParameters,
+                onReceiveProgress: onReceiveProgress,
+                onSendProgress: onSendProgress,
+              );
+            } catch (e) {
+              rethrow;
+            }
             break;
           }
         case METHODE.put:
           {
-            response = await dio.put(
-              endPoint,
-              data: json.encode(body),
-              queryParameters: queryParameters,
-              onReceiveProgress: onReceiveProgress,
-              onSendProgress: onSendProgress,
-            );
+            try {
+              response = await dio.put(
+                endPoint,
+                data: json.encode(body),
+                queryParameters: queryParameters,
+                onReceiveProgress: onReceiveProgress,
+                onSendProgress: onSendProgress,
+              );
+            } catch (e) {
+              rethrow;
+            }
+
             break;
           }
         case METHODE.delete:
@@ -97,7 +108,7 @@ class DioHelper {
       }
       return response;
     } catch (e) {
-      print(e);
+      debugPrint(e.toString());
       rethrow;
     }
   }

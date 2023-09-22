@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:getxstructurecode/module/home/domain/entity/product_model/product_model.dart';
 
-import '../../../core/network/dio_helper.dart';
+import '../../../network/dio_helper.dart';
 
 // ignore: one_member_abstracts
 abstract class IHomeProvider {
@@ -17,9 +17,11 @@ class HomeProvider implements IHomeProvider {
       final list =
           (response.data as List).map((e) => ProductModel.fromJson(e)).toList();
       return list;
-    } on DioException catch (e) {
-      final errorMessage = e.error.toString();
-      throw errorMessage;
+    } catch (e) {
+      // final errorMessage = e.error.toString();
+      rethrow;
+      // throw errorMessage;
+      // rethrow ;
     }
   }
 }

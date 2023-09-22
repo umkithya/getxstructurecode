@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getxstructurecode/module/home/presentation/binding/home_binding.dart';
 import 'package:getxstructurecode/module/home/presentation/controller/home_controller.dart';
+import 'package:getxstructurecode/utils/service/secure_local_storage.dart';
 import 'package:go_router/go_router.dart';
 
 class HomePage extends StatefulWidget {
@@ -26,8 +27,9 @@ class _HomePageState extends State<HomePage> {
         title: const Text("Home"),
         actions: [
           IconButton(
-              onPressed: () => context.push("/detail"),
-              icon: const Icon(Icons.arrow_forward_ios))
+            onPressed: () => context.push("/detail"),
+            icon: const Icon(Icons.arrow_forward_ios),
+          )
         ],
       ),
       body:
@@ -46,19 +48,34 @@ class _HomePageState extends State<HomePage> {
           //       ScaffoldMessenger.of(context).showSnackBar(snackBar);
           //     },
           //     child: const Icon(Icons.message_outlined))
-          Obx(
-        () => ListView.builder(
-          itemCount: homeController.listProduct.length,
-          itemBuilder: (context, index) => Card(
-            child: Padding(
-              padding: const EdgeInsets.all(30),
-              child: Text(
-                homeController.listProduct[index].title.toString(),
-              ),
-            ),
-          ),
-        ),
-      ),
+          //     Obx(
+          //   () => ListView.builder(
+          //     itemCount: homeController.listProduct.length,
+          //     itemBuilder: (context, index) => Card(
+          //       child: Padding(
+          //         padding: const EdgeInsets.all(30),
+          //         child: Text(
+          //           homeController.listProduct[index].title.toString(),
+          //         ),
+          //       ),
+          //     ),
+          //   ),
+          // ),
+          homeController.obx(
+              (state) => ListView.builder(
+                    itemCount: homeController.listProduct.length,
+                    itemBuilder: (context, index) => Card(
+                      child: Padding(
+                        padding: const EdgeInsets.all(30),
+                        child: Text(
+                          homeController.listProduct[index].title.toString(),
+                        ),
+                      ),
+                    ),
+                  ),
+              onEmpty: const Text("Empty"),
+              onLoading:
+                  const Center(child: CircularProgressIndicator.adaptive())),
       //   ],
       // ),
       // ),
@@ -67,13 +84,19 @@ class _HomePageState extends State<HomePage> {
         children: [
           FloatingActionButton(
             heroTag: "btn1",
-            onPressed: () => homeController.increment(),
+            onPressed: () async {
+              await SecureLocalStorage.storeData("number", 123.0);
+              print("Done");
+            },
             child: const Icon(Icons.add),
           ),
           FloatingActionButton(
             heroTag: "btn2",
-            onPressed: () => homeController.decrement(),
-            child: const Icon(Icons.remove),
+            onPressed: () async {
+              var num = await SecureLocalStorage.getNumValue("number");
+              print("Done #$num");
+            },
+            child: const Icon(Icons.remove_red_eye),
           ),
         ],
       ),
