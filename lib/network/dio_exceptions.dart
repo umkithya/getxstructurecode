@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 
 class DioExceptions implements Exception {
   late String message;
@@ -15,6 +16,7 @@ class DioExceptions implements Exception {
         message = "Receive timeout in connection with API server";
         break;
       case DioExceptionType.badResponse:
+        debugPrint("Hey Bad Response");
         // message = _handleError(
         //   dioError.response?.statusCode,
         //   dioError.response?.data,
