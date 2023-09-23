@@ -9,7 +9,7 @@ void main() {
     flavor: Flavor.pro,
     values: FlavorValues(
       baseUrl: "https://thecoder-pro.com/api/v1/",
-      version: "V1.0.0-Pro",
+      version: "V1.0.0",
       name: "The Coder Pro Flavor",
     ),
   );

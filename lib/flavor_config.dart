@@ -1,10 +1,17 @@
 enum Flavor { dev, pre, pro }
 
 class FlavorValues {
-  FlavorValues({required this.baseUrl, this.version, this.name});
+  FlavorValues(
+      {required this.baseUrl,
+      this.version,
+      this.name,
+      this.androidBundleId,
+      this.iOSBundleName});
   final String baseUrl;
   final String? version;
   final String? name;
+  final String? androidBundleId;
+  final String? iOSBundleName;
 }
 
 class FlavorConfig {
