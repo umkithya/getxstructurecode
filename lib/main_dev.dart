@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 
 import 'flavor_config.dart';
 import 'main.dart';
+import 'network/end_point.dart';
 
-void main() {
+Future<void> main() async {
   FlavorConfig(
     flavor: Flavor.dev,
     values: FlavorValues(
-      baseUrl: "https://thecoder-dev.com/api/v1/",
+      baseUrl: BaseUrl.dev,
       version: "V1.0.0-Dev",
       name: "The Coder Dev Flavor",
     ),

@@ -17,5 +17,5 @@ class ProductModel with _$ProductModel {
     final RatingModel? rating,
   }) = _ProductModel;
   factory ProductModel.fromJson(Map<String, dynamic> json) =>
-      _$ProductModelFromJson(json);
+      _$ProductModelFromJson(json);  
 }

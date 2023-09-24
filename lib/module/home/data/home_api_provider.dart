@@ -14,7 +14,7 @@ class HomeProvider implements IHomeProvider {
     try {
       final Response response =
           await DioHelper().onNetworkRequest(path, methode: METHODE.get);
-      final list =
+      final list = response.data
           (response.data as List).map((e) => ProductModel.fromJson(e)).toList();
       return list;
     } catch (e) {

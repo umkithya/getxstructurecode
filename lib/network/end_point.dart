@@ -14,3 +14,10 @@ class Endpoints {
   static const String products = '/products';
   static const String login = '/auth/login';
 }
+
+class BaseUrl {
+  BaseUrl._();
+  static String get dev => "http://192.168.43.35:8080/api/v3";
+  static String get pre => "https://pre.com";
+  static String get pro => "https://pro.com";
+}

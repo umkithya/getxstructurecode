@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 
 import 'flavor_config.dart';
 import 'main.dart';
+import 'network/end_point.dart';
 
-void main() {
+Future<void> main() async{
   FlavorConfig(
     flavor: Flavor.pre,
     values: FlavorValues(
-      baseUrl: "https://thecoder-pre.com/api/v1/",
+      baseUrl: BaseUrl.pre,
       version: "V1.0.0-Pre",
       name: "The Coder Pre Flavor",
     ),

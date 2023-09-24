@@ -14,12 +14,17 @@ class AuthProvider implements IAuthProvider {
   Future<String> submitLogin(String path,
       {required String username, required String password}) async {
     try {
+      debugPrint("$username$password");
       final body = {"username": username, "password": password};
       Response response = await DioHelper().onNetworkRequest(path,
-          methode: METHODE.post, body: body, isDebugOn: true);
+          methode: METHODE.post,
+          body: body,
+          isDebugOn: true,
+          showBodyInput: true);
       debugPrint("$response");
-      return "";
+      return response.data['token'];
     } catch (e) {
+      debugPrint("Hi $e");
       // final errorMessage = e.error.toString();
       rethrow;
       // throw errorMessage;

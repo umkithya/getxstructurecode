@@ -7,7 +7,7 @@ class AuthRepository implements IAuthRepository {
   final IAuthProvider provider;
 
   @override
-  Future<bool> onSubmitLogin(String username, String password) async {
+  Future<String> onSubmitLogin(String username, String password) async {
     try {
       String data = await provider.submitLogin(
         Endpoints.login,
@@ -15,8 +15,9 @@ class AuthRepository implements IAuthRepository {
         password: password,
       );
       print("Msg:$data");
-      return false;
+      return data;
     } catch (e) {
+      print("Msg e:$e");
       rethrow;
       // return [];
     }

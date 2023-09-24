@@ -16,11 +16,19 @@ class DioExceptions implements Exception {
         message = "Receive timeout in connection with API server";
         break;
       case DioExceptionType.badResponse:
-        debugPrint("Hey Bad Response");
-        // message = _handleError(
-        //   dioError.response?.statusCode,
-        //   dioError.response?.data,
-        // );
+        debugPrint("Hey Bad Response ${dioError.message}");
+        if (dioError.message!.contains("invalid status")) {
+          message = _handleError(
+            400,
+            dioError.message,
+          );
+        } else {
+          message = _handleError(
+            dioError.response?.statusCode,
+            dioError.response?.data,
+          );
+        }
+
         break;
       case DioExceptionType.sendTimeout:
         message = "Send timeout in connection with API server";

@@ -1,13 +1,12 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class SecureLocalStorage {
   static FlutterSecureStorage? storage;
   static void init() {
-    AndroidOptions getAndroidOptions() => const AndroidOptions(
-          encryptedSharedPreferences: true,
-        );
-    storage = FlutterSecureStorage(
-      aOptions: getAndroidOptions(),
+    const FlutterSecureStorage(
+      iOptions: IOSOptions(accessibility: KeychainAccessibility.first_unlock),
+      aOptions: AndroidOptions(encryptedSharedPreferences: true),
     );
   }
 
@@ -21,12 +20,25 @@ class SecureLocalStorage {
   }
 
   static Future<bool> getBoolValue(String key) async {
-    String? value = await storage!.read(key: key);
-    return value == "true";
+    debugPrint("Hiss ${storage == null}");
+    try {
+      String? value = await storage!.read(key: key);
+      return value == "true";
+    } catch (e) {
+      debugPrint("e$e");
+      return false;
+    }
   }
 
   static Future<String> getStringValue(String key) async {
-    String? value = await storage!.read(key: key);
-    return value.toString();
+    // String? value = await storage!.read(key: key);
+    // return value.toString();
+    try {
+      String? value = await storage!.read(key: key);
+      return value!;
+    } catch (e) {
+      debugPrint("e$e");
+      return "";
+    }
   }
 }

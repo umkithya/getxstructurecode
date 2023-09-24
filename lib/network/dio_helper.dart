@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
+import 'dio_exceptions.dart';
 import 'end_point.dart';
 
 class DioHelper {
@@ -24,8 +25,7 @@ class DioHelper {
           const Duration(milliseconds: Endpoints.connectionTimeout)
       ..options.receiveTimeout =
           const Duration(milliseconds: Endpoints.receiveTimeout)
-      ..options.responseType = ResponseType.json
-      ..options.validateStatus = (_) => false;
+      ..options.responseType = ResponseType.json;
 
     if (methode != METHODE.get && body == null) {
       throw Exception('Body must not be null of $methode');
@@ -62,17 +62,14 @@ class DioHelper {
           }
         case METHODE.post:
           {
-            try {
-              response = await dio.post(
-                endPoint,
-                data: json.encode(body),
-                queryParameters: queryParameters,
-                onReceiveProgress: onReceiveProgress,
-                onSendProgress: onSendProgress,
-              );
-            } catch (e) {
-              rethrow;
-            }
+            response = await dio.post(
+              endPoint,
+              data: json.encode(body),
+              queryParameters: queryParameters,
+              onReceiveProgress: onReceiveProgress,
+              onSendProgress: onSendProgress,
+            );
+
             break;
           }
         case METHODE.put:
@@ -108,7 +105,7 @@ class DioHelper {
       }
       return response;
     } catch (e) {
-      debugPrint(e.toString());
+      // debugPrint("Ex$e");
       rethrow;
     }
   }
