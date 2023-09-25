@@ -1,4 +1,4 @@
-import 'package:getxstructurecode/network/end_point.dart';
+import 'package:prohecomapp/network/end_point.dart';
 
 import '../domain/adapters/home_repository_adapter.dart';
 import '../domain/entity/product_model/product_model.dart';

@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:getxstructurecode/module/home/domain/entity/product_model/product_model.dart';
+import 'package:prohecomapp/module/home/domain/entity/product_model/product_model.dart';
 
 import '../../../network/dio_helper.dart';
 
@@ -14,7 +14,7 @@ class HomeProvider implements IHomeProvider {
     try {
       final Response response =
           await DioHelper().onNetworkRequest(path, methode: METHODE.get);
-      final list = response.data
+      final list =
           (response.data as List).map((e) => ProductModel.fromJson(e)).toList();
       return list;
     } catch (e) {

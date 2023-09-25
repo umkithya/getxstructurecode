@@ -1,8 +1,8 @@
 // import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getxstructurecode/core/auth/domain/adapters/auth_repository_adapter.dart';
-import 'package:getxstructurecode/utils/service/secure_local_storage.dart';
+import 'package:prohecomapp/core/auth/domain/adapters/auth_repository_adapter.dart';
+import 'package:prohecomapp/utils/service/secure_local_storage.dart';
 
 class AuthController extends GetxController {
   // AppState(super.initial);
@@ -19,8 +19,8 @@ class AuthController extends GetxController {
     await authRepository.onSubmitLogin(username, password).then((value) async {
       debugPrint("value$value");
       // await SecureLocalStorage.storeData("logged_in", value);
-      String str = await SecureLocalStorage.getStringValue("logged_in");
-      debugPrint("str$str");
+      // String str = await SecureLocalStorage.getStringValue("logged_in");
+      // debugPrint("str$str");
       debugPrint("Hey logged_in");
     }, onError: (e) {
       debugPrint("Exss $e");

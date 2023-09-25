@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getxstructurecode/module/home/presentation/binding/home_binding.dart';
-import 'package:getxstructurecode/module/home/presentation/controller/home_controller.dart';
-import 'package:getxstructurecode/utils/service/secure_local_storage.dart';
+import 'package:prohecomapp/module/home/presentation/binding/home_binding.dart';
+import 'package:prohecomapp/module/home/presentation/controller/home_controller.dart';
+import 'package:prohecomapp/utils/service/secure_local_storage.dart';
 import 'package:go_router/go_router.dart';
 
 class HomePage extends StatefulWidget {
@@ -85,7 +85,7 @@ class _HomePageState extends State<HomePage> {
           FloatingActionButton(
             heroTag: "btn1",
             onPressed: () async {
-              await SecureLocalStorage.storeData("number", 123.0);
+              // await SecureLocalStorage.storeData("number", 123.0);
               print("Done");
             },
             child: const Icon(Icons.add),
@@ -93,7 +93,7 @@ class _HomePageState extends State<HomePage> {
           FloatingActionButton(
             heroTag: "btn2",
             onPressed: () async {
-              var num = await SecureLocalStorage.getNumValue("number");
+              // var num = await SecureLocalStorage.getNumValue("number");
               print("Done #$num");
             },
             child: const Icon(Icons.remove_red_eye),

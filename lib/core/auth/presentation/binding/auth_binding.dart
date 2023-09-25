@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
-import 'package:getxstructurecode/core/auth/data/auth_api_provider.dart';
-import 'package:getxstructurecode/core/auth/data/auth_repository.dart';
-import 'package:getxstructurecode/core/auth/domain/adapters/auth_repository_adapter.dart';
-import 'package:getxstructurecode/core/auth/presentation/controller/auth_controller.dart';
+import 'package:prohecomapp/core/auth/data/auth_api_provider.dart';
+import 'package:prohecomapp/core/auth/data/auth_repository.dart';
+import 'package:prohecomapp/core/auth/domain/adapters/auth_repository_adapter.dart';
+import 'package:prohecomapp/core/auth/presentation/controller/auth_controller.dart';
 
 class AuthBinding extends Bindings {
   @override

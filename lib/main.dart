@@ -1,18 +1,15 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:getxstructurecode/config/routes.dart';
-import 'package:getxstructurecode/core/app_control/controller/app_controller.dart';
-import 'package:getxstructurecode/utils/service/secure_local_storage.dart';
+import 'package:prohecomapp/config/routes.dart';
+import 'package:prohecomapp/core/app_control/controller/app_controller.dart';
+import 'package:prohecomapp/utils/service/secure_local_storage.dart';
 import 'package:provider/provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await runZonedGuarded(() async {
-    SecureLocalStorage.init();
-  }, (error, stackTrace) {});
+  await runZonedGuarded(() async {}, (error, stackTrace) {});
   runApp(const MyApp());
 }
 

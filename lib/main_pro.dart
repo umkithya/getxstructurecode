@@ -3,7 +3,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getxstructurecode/network/end_point.dart';
+import 'package:prohecomapp/network/end_point.dart';
 
 import 'core/app_control/controller/app_controller.dart';
 import 'flavor_config.dart';
@@ -11,6 +11,8 @@ import 'main.dart';
 import 'utils/service/secure_local_storage.dart';
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
   FlavorConfig(
     flavor: Flavor.pro,
     values: FlavorValues(
@@ -23,9 +25,9 @@ Future<void> main() async {
 
   await runZonedGuarded(() async {
     debugPrint("Hi");
-    SecureLocalStorage.init();
 
     await appController.checkAuth();
+    debugPrint("w");
   }, (error, stackTrace) {});
   runApp(const MyApp());
 }

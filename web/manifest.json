@@ -1,6 +1,6 @@
 {
-    "name": "getxstructurecode",
-    "short_name": "getxstructurecode",
+    "name": "prohecomapp",
+    "short_name": "prohecomapp",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

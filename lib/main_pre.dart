@@ -6,6 +6,8 @@ import 'main.dart';
 import 'network/end_point.dart';
 
 Future<void> main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+
   FlavorConfig(
     flavor: Flavor.pre,
     values: FlavorValues(

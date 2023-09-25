@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getxstructurecode/network/dio_exceptions.dart';
-import 'package:getxstructurecode/module/home/domain/adapters/home_repository_adapter.dart';
-import 'package:getxstructurecode/module/home/domain/entity/product_model/product_model.dart';
+import 'package:prohecomapp/network/dio_exceptions.dart';
+import 'package:prohecomapp/module/home/domain/adapters/home_repository_adapter.dart';
+import 'package:prohecomapp/module/home/domain/entity/product_model/product_model.dart';
 
 class HomeController extends GetxController
     with StateMixin<List<ProductModel>> {

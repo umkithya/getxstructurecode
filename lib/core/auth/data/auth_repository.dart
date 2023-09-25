@@ -1,6 +1,6 @@
-import 'package:getxstructurecode/core/auth/data/auth_api_provider.dart';
-import 'package:getxstructurecode/core/auth/domain/adapters/auth_repository_adapter.dart';
-import 'package:getxstructurecode/network/end_point.dart';
+import 'package:prohecomapp/core/auth/data/auth_api_provider.dart';
+import 'package:prohecomapp/core/auth/domain/adapters/auth_repository_adapter.dart';
+import 'package:prohecomapp/network/end_point.dart';
 
 class AuthRepository implements IAuthRepository {
   AuthRepository({required this.provider});

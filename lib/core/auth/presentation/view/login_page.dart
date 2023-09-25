@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getxstructurecode/core/auth/presentation/binding/auth_binding.dart';
+import 'package:prohecomapp/core/auth/presentation/binding/auth_binding.dart';
 
 import '../controller/auth_controller.dart';
 
